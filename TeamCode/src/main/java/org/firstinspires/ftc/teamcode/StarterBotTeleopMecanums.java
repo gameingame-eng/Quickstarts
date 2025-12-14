@@ -76,12 +76,19 @@ public class StarterBotTeleopMecanums extends OpMode {
 
     // Declare OpMode members.
     private DcMotor leftFrontDrive = null;
+    private boolean intakeOn = false;
+    private boolean StopIntakeY = false;
+    private boolean Outtake = false;
+    private boolean prevIntakeButtonX = false;
+    private boolean prevOutTakeButtonA = false;
+    final double INTAKE_POWER = 1.0;
     private DcMotor rightFrontDrive = null;
     private DcMotor leftBackDrive = null;
     private DcMotor rightBackDrive = null;
     private DcMotorEx launcher = null;
     private CRServo leftFeeder = null;
     private CRServo rightFeeder = null;
+    private DcMotor intake = null;
 
     ElapsedTime feederTimer = new ElapsedTime();
 
@@ -135,6 +142,7 @@ public class StarterBotTeleopMecanums extends OpMode {
         launcher = hardwareMap.get(DcMotorEx.class, "launcher");
         leftFeeder = hardwareMap.get(CRServo.class, "left_feeder");
         rightFeeder = hardwareMap.get(CRServo.class, "right_feeder");
+        intake = hardwareMap.get(DcMotor.class, "intake");
 
         /*
          * To drive forward, most robots need the motor on one side to be reversed,
@@ -207,6 +215,27 @@ public class StarterBotTeleopMecanums extends OpMode {
      */
     @Override
     public void loop() {
+
+        boolean currentIntakeButtonX = gamepad1.x || gamepad2.x;
+        boolean OuttakeButtonA = gamepad1.a || gamepad2.a;
+
+        // Check for a rising edge (just pressed)
+        if (currentIntakeButtonX && !prevIntakeButtonX) {
+            // Flip the state of the intake
+            intakeOn = !intakeOn;
+        }
+        if (OuttakeButtonA && !prevOutTakeButtonA) {
+            Outtake = !Outtake;
+        }
+
+
+        // Apply power based on the current state
+        if (intakeOn) {
+            intake.setPower(INTAKE_POWER);
+        } else {
+            intake.setPower(STOP_SPEED);
+        }
+
         /*
          * Here we call a function called arcadeDrive. The arcadeDrive function takes the input from
          * the joysticks, and applies power to the left and right drive motor to move the robot
@@ -222,7 +251,7 @@ public class StarterBotTeleopMecanums extends OpMode {
          * Here we give the user control of the speed of the launcher motor without automatically
          * queuing a shot.
          */
-        if (gamepad1.y) {
+        if (gamepad1.right_bumper) { // spin up flywheel
             launcher.setVelocity(LAUNCHER_TARGET_VELOCITY);
         } else if (gamepad1.b) { // stop flywheel
             launcher.setVelocity(STOP_SPEED);

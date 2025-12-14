@@ -62,7 +62,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
  * main robot "loop," continuously checking for conditions that allow us to move to the next step.
  */
 
-@Autonomous(name="StarterBotAuto", group="StarterBot")
+@Autonomous(name="SmallTriangle", group="Autonomous")
 //@Disabled
 public class SmallTriangle extends OpMode
 {

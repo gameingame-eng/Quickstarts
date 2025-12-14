@@ -43,15 +43,15 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.PIDFCoefficients;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-@TeleOp(name = "StarterBotTeleop", group = "Gobilda")
+@TeleOp(name = "StarterBotTeleopIntake", group = "Gobilda")
 //@Disabled
 public class StarterBotTeleop extends OpMode {
     final double FEED_TIME_SECONDS = 1; //The feeder servos run this long when a shot is requested.
     final double STOP_SPEED = 0.0; //We send this power to the servos when we want them to stop.
     final double FULL_SPEED = 1.0;
 
-    final double LAUNCHER_TARGET_VELOCITY = 1125;
-    final double LAUNCHER_MIN_VELOCITY = 1025;
+    final double LAUNCHER_TARGET_VELOCITY = -100;
+    final double LAUNCHER_MIN_VELOCITY = -75;
 
     // Declare OpMode members.
     private DcMotor leftDrive = null;
@@ -83,14 +83,13 @@ public class StarterBotTeleop extends OpMode {
     int gear = 1; // 0 = R, 1 = Gear 1, 2 = Gear 2
     double prevForward = 0.0; // For forward decay
     double prevTurn = 0.0;    // For turn decay
-    
+
     // NEW DEBOUNCE VARIABLES FOR GEAR SHIFTING (FIX 1)
     private boolean prevDpadUp = false;
     private boolean prevDpadDown = false;
     // ------------------------------------
 
-
-    /*
+   /*
      * Code to run ONCE when the driver hits INIT
      */
     @Override
@@ -162,7 +161,7 @@ public class StarterBotTeleop extends OpMode {
         }
 
         // Update previous state for the next loop iteration
-        prevIntakeButtonX = currentIntakeButtonX;
+        //  prevIntakeButtonX = currentIntakeButtonX;
 
 
         /*
@@ -173,7 +172,7 @@ public class StarterBotTeleop extends OpMode {
         } else if (gamepad1.b || gamepad2.b) { // stop flywheel
             launcher.setVelocity(STOP_SPEED);
         }
-        
+
         // --- Config ---
         double baseSpeed = 0.6;// Gear 1 speed
         double brakeFactor = 0.8; // Smooth braking factor
@@ -191,7 +190,7 @@ public class StarterBotTeleop extends OpMode {
             // Shift down: floor at Reverse (0)
             gear = Math.max(gear - 1, 0);
         }
-        
+
         // Update previous state for next loop
         prevDpadUp = currentDpadUp;
         prevDpadDown = currentDpadDown;
@@ -200,7 +199,7 @@ public class StarterBotTeleop extends OpMode {
         double speedScale;
         switch (gear) {
             case 0: // Reverse
-                speedScale = baseSpeed; 
+                speedScale = baseSpeed;
                 break;
             case 1: // Gear 1
                 speedScale = baseSpeed;
@@ -220,7 +219,7 @@ public class StarterBotTeleop extends OpMode {
 
         double targetForward;
         double combinedThrottle = Math.max(throttle, throttle2);
-        
+
         if (gear == 0) {
             targetForward = -combinedThrottle * speedScale; // Reverse
         } else {
@@ -231,20 +230,20 @@ public class StarterBotTeleop extends OpMode {
         if ((brake > 0.05) || (brake2 > 0.05)) {
             targetForward = prevForward * brakeFactor; // decay speed
         }
-        
+
         // --- TURNING LOGIC (Direction Corrected) ---
-        
+
         // Read raw turn inputs from both gamepads and combine them
         // The negative sign is applied to reverse the turning direction
-        double rawTurn1 = -gamepad1.right_stick_x; 
-        double rawTurn2 = -gamepad2.right_stick_x; 
+        double rawTurn1 = -gamepad1.right_stick_x;
+        double rawTurn2 = -gamepad2.right_stick_x;
         double combinedRawTurn = rawTurn1 + rawTurn2;
 
         // Apply speed scale to the combined input
         double targetTurn = combinedRawTurn * speedScale;
 
         // --- Smooth braking/decay (Forward & Turn) ---
-        
+
         // Forward Smoothing
         double forward = (Math.abs(targetForward) > 0.01) ? targetForward : prevForward * brakeFactor;
 
@@ -260,14 +259,14 @@ public class StarterBotTeleop extends OpMode {
         // Save current values for next loop iteration
         prevForward = forward;
         prevTurn = turn;
-        
+
         // Optional: deadband to prevent drift from tiny stick movements
         if (Math.abs(turn) < 0.05){
             turn = 0;
         }
 
         // Drive the robot
-        arcadeDrive(forward, turn); 
+        arcadeDrive(forward, turn);
 
 
         /*
@@ -295,18 +294,18 @@ public class StarterBotTeleop extends OpMode {
             case 2: gearLabel = "2"; break;
             default: gearLabel = "?"; break;
         }
-        
+
         telemetry.addData("Gear", gearLabel);
         telemetry.addData("Forward Power", forward);
         telemetry.addData("Turn Power", turn);
         telemetry.addData("State", launchState);
         telemetry.addData("Intake State", intakeOn ? "ON (X)" : "OFF");
-        
+
         // -----------------------------------------------------------------
         // --- Fix 2: Swapped Telemetry Output (rightPower, leftPower) ---
         // -----------------------------------------------------------------
         telemetry.addData("Motors", "left (%.2f), right (%.2f)", rightPower, leftPower);
-        
+
         telemetry.addData("motorSpeed", launcher.getVelocity());
         telemetry.update();
 
