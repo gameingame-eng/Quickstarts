@@ -332,3 +332,107 @@ public class StarterBotTeleopMecanums extends OpMode {
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+ hey man
+ you.
+ YOU.
+ YoU.
+ YOU have been digging through our files.
+ dont copy us
+ unless we said so
+ or we will know
+ and we will come for you
+ im in ur walls
+ AI is stupid
+ ishan is short
+ ishansped
+ Cr7 is better
+ 't listen yot laksh
+ messi is the goat
+
+ kpop demon hunters is goated
+ JINU JINU JINU JINU JINU JINU JINU JINU JINU
+ NO ITS NOT
+ DONT
+ NO
+ JINU SUCKS
+  GFDRYTGIUOPYIFTF
+  PWFH[
+
+  frhpi
+  gp
+  ogpgrpgpgdp
+  hdhtihipgdrh
+  pjpg
+  pjgrj
+  gjpgdrj
+  gdj
+  ogjoppgjdopjodgjpogd
+  GO PROGRAM PRANAV
+  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7  CR7
+M10 MESSI MESSI MESSI MESSI MESSI MESSI MESSI GOAT m
+ */
