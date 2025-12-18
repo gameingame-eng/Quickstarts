@@ -70,8 +70,8 @@ public class StarterBotTeleopMecanums extends OpMode {
      * velocity. Here we are setting the target, and minimum velocity that the launcher should run
      * at. The minimum velocity is a threshold for determining when to fire.
      */
-    final double LAUNCHER_TARGET_VELOCITY = 1125;
-    final double LAUNCHER_MIN_VELOCITY = 1075;
+    final double LAUNCHER_TARGET_VELOCITY = 1400;
+    final double LAUNCHER_MIN_VELOCITY = 1200;
 
     // Declare OpMode members.
     private DcMotor leftFrontDrive = null;
@@ -235,6 +235,13 @@ public class StarterBotTeleopMecanums extends OpMode {
         } else {
             intake.setPower(STOP_SPEED);
         }
+        if (Outtake) {
+            intake.setPower(-INTAKE_POWER);
+        } else {
+            intake.setPower(STOP_SPEED);
+        }
+
+
 
         /*
          * Here we call a function called arcadeDrive. The arcadeDrive function takes the input from
@@ -256,7 +263,9 @@ public class StarterBotTeleopMecanums extends OpMode {
         } else if (gamepad1.b) { // stop flywheel
             launcher.setVelocity(STOP_SPEED);
         }
-
+        if (gamepad1.left_stick_button) {
+            launcher.setVelocity(LAUNCHER_TARGET_VELOCITY);
+        }
         /*
          * Now we call our "Launch" function.
          */
