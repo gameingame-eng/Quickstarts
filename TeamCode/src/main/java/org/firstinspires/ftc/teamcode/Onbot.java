@@ -292,7 +292,6 @@ public class Onbot extends OpMode {
      */
     @Override
     public void stop() {
-        telemetry.addData("match is over my sire", "You are my god");
     }
 
     void mecanumDrive(double forward, double strafe, double rotate){
